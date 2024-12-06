@@ -1,0 +1,18 @@
+﻿@model FakeCET.Models.Polaznik
+
+@{
+    ViewBag.Title = "Detalji polaznika";
+}
+
+<h2>Detalji polaznika</h2>
+
+<div>
+    <h4>Ime: @Model.Ime</h4>
+    <h4>Prezime: @Model.Prezime</h4>
+    <h4>Kontakt Telefon: @Model.KontaktTelefon</h4>
+    <h4>Mejl Adresa: @Model.MejlAdresa</h4>
+</div>
+
+<p>
+    @Html.ActionLink("Nazad na listu", "Index")
+</p>

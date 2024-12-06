@@ -1,0 +1,57 @@
+﻿@model IEnumerable<FakeCET.Models.PrijavaKursViewModel>
+
+@{
+    ViewBag.Title = "Sve Prijave";
+}
+
+<h2>Sve Prijave</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Naziv Kursa</th>
+            <th>Ime Predavača</th>
+            <th>Prezime Predavača</th>
+            <th>Datum Početka</th>
+            <th>Datum Završetka</th>
+            <th>Ime Polaznika</th>
+            <th>Prezime Polaznika</th>
+            <th>Status</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.NazivKursa</td>
+                <td>@item.ImePredavaca</td>
+                <td>@item.PrezimePredavaca</td>
+                <td>@item.DatumPocetka.ToString("dd.MM.yyyy")</td>
+                <td>@item.DatumZavrsetka.ToString("dd.MM.yyyy")</td>
+                <td>@item.ImePolaznika</td>
+                <td>@item.PrezimePolaznika</td>
+                <td>@item.Status</td>
+                <td>
+                    @if (User.IsInRole("Admin"))
+                    {
+
+                        using (Html.BeginForm("PromeniStatus", "PrijavaKurs", new { prijavaId = item.PrijavaID }, FormMethod.Post))
+                        {
+                            <select name="status" class="form-control">
+                                <option value="-1" @(item.Status == -1 ? "selected" : "")>Nova prijava</option>
+                                <option value="0" @(item.Status == 0 ? "selected" : "")>Prihvaćena</option>
+                                <option value="1" @(item.Status == 1 ? "selected" : "")>Odbijena</option>
+                            </select>
+                            <button type="submit" class="btn btn-primary">Promeni Status</button>
+                        }
+                    }
+                    else
+                    {
+                        <span class="text-muted">Nije dostupno</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,61 @@
+﻿@model List<FakeCET.ViewModels.TerminViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Termini</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Kurs</th>
+            <th>Predavač</th>
+            <th>Datum početka</th>
+            <th>Datum završetka</th>
+            <th>Status</th>
+            <th>Mesto održavanja</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var termin in Model)
+        {
+            <tr>
+                <td>@termin.KursNaziv</td>
+                <td>@($"{termin.PredavacIme} {termin.PredavacPrezime}")</td>
+                <td>
+                    @String.Format("{0:dd.MM.yyyy}", termin.Termin.DatumPocetka)
+                </td>
+                <td>
+                    @String.Format("{0:dd.MM.yyyy}", termin.Termin.DatumZavrsetka)
+                </td>
+                <td>
+                    @if (termin.Termin.Status)
+                    {
+                        <span class="btn btn-danger disabled">Otkazan</span>
+                    }
+                    else
+                    {
+                        <span class="btn btn-success disabled">Potvrđen</span>
+                    }
+                </td>
+                <td>@termin.MestoNaziv</td>
+                <td>
+                    @if (User.IsInRole("Predavac"))
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id = termin.Termin.TerminID }, new { @class = "btn btn-primary btn-sm" })
+                    }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("Delete", "Delete", new { id = termin.Termin.TerminID }, new { @class = "btn btn-danger btn-sm" })
+                    }
+                    @Html.ActionLink("Details", "Details", new { id = termin.Termin.TerminID }, new { @class = "btn btn-info btn-sm" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

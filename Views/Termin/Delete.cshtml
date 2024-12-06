@@ -1,0 +1,74 @@
+﻿@model FakeCET.Models.Termin
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Termin</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.KursID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PredavacKurs.Kurs.Naziv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PredavacID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PredavacKurs.Predavac.Ime)
+            @Html.DisplayFor(model => model.PredavacKurs.Predavac.Prezime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatumPocetka)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatumPocetka)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatumZavrsetka)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatumZavrsetka)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MestoID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MestoOdrzavanja.Naziv)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

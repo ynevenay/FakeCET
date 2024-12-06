@@ -1,0 +1,35 @@
+﻿@model FakeCET.Models.MestoOdrzavanja
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="container">
+    <h2>Delete Mesto - @Model.Naziv</h2>
+
+    <h3>Potvrdite brisanje</h3>
+
+    <div class="card">
+        <div class="card-body">
+            <hr />
+
+            <dl class="row">
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Naziv)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Naziv)</dd>
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    <input type="submit" value="Delete" class="btn btn-danger" /> |
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

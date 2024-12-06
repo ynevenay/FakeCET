@@ -1,0 +1,34 @@
+﻿@model FakeCET.Models.Predavac
+
+<h2>Brisanje</h2>
+
+<h3>Da li ste sigurni da zelite da uklonite predavaca?</h3>
+<div>
+    <h4>Predavač</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Ime
+        </dt>
+        <dt>
+            Prezime
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ime)
+        </dd>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prezime)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

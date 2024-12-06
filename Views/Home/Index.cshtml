@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "IT Kursevi";
+}
+
+<main>
+    <section class="row" aria-labelledby="itCoursesTitle">
+        <p class="lead">Istražite različite IT kurseve i naučite kako da napravite sjajne aplikacije koristeći moderne tehnologije.</p>
+        <p><a href="@Url.Action("Index", "Kurs", new { area = "" })" class="btn btn-primary btn-md">Pogledajte više &raquo;</a></p>
+    </section>
+
+    <div class="row">
+        <section class="col-md-4" aria-labelledby="csharpTitle">
+            <h2 id="csharpTitle">C# Programiranje</h2>
+            <p>
+                Naučite C#, moćan programski jezik koji se koristi za pravljenje Windows aplikacija, veb aplikacija i još mnogo toga.
+            </p>
+        </section>
+        <section class="col-md-4" aria-labelledby="sqlTitle">
+            <h2 id="sqlTitle">SQL Programiranje</h2>
+            <p>Master SQL, standardni jezik za sisteme upravljanja relacionim bazama podataka (RDBMS).</p>
+        </section>
+        <section class="col-md-4" aria-labelledby="webDevTitle">
+            <h2 id="webDevTitle">Web Development</h2>
+            <p>Izgradite prilagodljive i dinamičke veb lokacije koristeći HTML, CSS, JavaScript i popularne okvire kao što je ASP.NET.</p>
+        </section>
+    </div>
+
+
+    <div class="row mt-4">
+        <section class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Info za projekat</h2>
+                    <p class="card-text">user: admin@cet.rs pass: Password123!Admin</p>
+                    <p class="card-text">user: predavac@cet.rs pass: Password123!Predavac</p>
+                    <p class="card-text">user: polaznik@cet.rs pass: Password123!Polaznik</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>

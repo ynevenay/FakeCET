@@ -1,0 +1,46 @@
+﻿@model IEnumerable<FakeCET.Models.Oblast>
+@{
+    ViewBag.Title = "Oblasti";
+}
+
+<div class="container">
+    <h2>Oblasti</h2>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Naziv</th>
+                @if (User.IsInRole("Admin") || User.IsInRole("Predavac"))
+                {
+                    <th>Akcija</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var o in Model)
+            {
+                <tr>
+                    <td>@o.Naziv</td>
+                    @if (User.IsInRole("Admin") || User.IsInRole("Predavac"))
+                    {
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Akcija">
+                                @Html.ActionLink("Details", "Details", new { id = o.OblastID }, new { @class = "btn btn-info btn-sm" })
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    @Html.ActionLink("Edit", "Edit", new { id = o.OblastID }, new { @class = "btn btn-warning btn-sm" })
+                                    @Html.ActionLink("Delete", "Delete", new { id = o.OblastID }, new { @class = "btn btn-danger btn-sm" })
+                                }
+                            </div>
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+    }
+</div>

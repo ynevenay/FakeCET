@@ -1,0 +1,125 @@
+﻿@{
+    ViewBag.Title = "API Predavaci";
+}
+
+<h2>API Predavaci</h2>
+
+<div>
+    <h3>Lista predavača</h3>
+    <button id="loadPredavaci" class="btn btn-primary">Učitaj predavače</button>
+    <ul id="predavaciList" class=" mt-3"></ul>
+
+</div>
+
+<div class="mt-4">
+    <h3>Dodaj predavača</h3>
+    <form id="addPredavacForm" class="form-inline">
+        <div class="form-group mb-2">
+            <label for="Ime" class="sr-only">Ime</label>
+            <input type="text" class="form-control" id="Ime" name="Ime" placeholder="Ime" required>
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+            <label for="Prezime" class="sr-only">Prezime</label>
+            <input type="text" class="form-control" id="Prezime" name="Prezime" placeholder="Prezime" required>
+        </div>
+        <div class="form-group mb-2">
+            <label for="KontaktTelefon" class="sr-only">Kontakt Telefon</label>
+            <input type="text" class="form-control" id="KontaktTelefon" name="KontaktTelefon" placeholder="Kontakt Telefon" required>
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+            <label for="MejlAdresa" class="sr-only">Mejl Adresa</label>
+            <input type="email" class="form-control" id="MejlAdresa" name="MejlAdresa" placeholder="Mejl Adresa" required>
+        </div>
+        <div class="form-group mb-2">
+            <label for="Zvanje" class="sr-only">Zvanje</label>
+            <input type="text" class="form-control" id="Zvanje" name="Zvanje" placeholder="Zvanje" required>
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+            <label for="OblastRada" class="sr-only">Oblast Rada</label>
+            <input type="text" class="form-control" id="OblastRada" name="OblastRada" placeholder="Oblast Rada" required>
+        </div>
+        <button type="submit" class="btn btn-success mb-2">Dodaj</button>
+    </form>
+</div>
+
+<div class="mt-4">
+    <h3>Obriši predavača</h3>
+    <form id="deletePredavacForm" class="form-inline">
+        <div class="form-group mb-2">
+            <label for="deleteId" class="sr-only">ID</label>
+            <input type="text" class="form-control" id="deleteId" name="deleteId" placeholder="ID" required>
+        </div>
+        <button type="submit" class="btn btn-danger mx-sm-3 mb-2">Obriši</button>
+    </form>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#loadPredavaci").click(function () {
+            $.ajax({
+                url: "/api/Predavacs",
+                method: "GET",
+                success: function (data) {
+                    var predavaciList = $("#predavaciList");
+                    predavaciList.empty();
+                    $.each(data, function (index, predavac) {
+                        predavaciList.append("<li class='list-group-item'>" + predavac.Ime + " " + predavac.Prezime + " (ID: " + predavac.PredavacID + ")</li>");
+                    });
+                },
+                error: function () {
+                    alert("Greška prilikom učitavanja predavača.");
+                }
+            });
+        });
+
+        $("#addPredavacForm").submit(function (event) {
+            event.preventDefault();
+            var predavac = {
+                Ime: $("#Ime").val(),
+                Prezime: $("#Prezime").val(),
+                KontaktTelefon: $("#KontaktTelefon").val(),
+                MejlAdresa: $("#MejlAdresa").val(),
+                Zvanje: $("#Zvanje").val(),
+                OblastRada: $("#OblastRada").val()
+            };
+            $.ajax({
+                url: "/api/Predavacs",
+                method: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(predavac),
+                success: function () {
+                    alert("Predavač uspešno dodat.");
+                    $("#addPredavacForm")[0].reset();
+                    $("#loadPredavaci").click();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert("Greška prilikom dodavanja predavača.");
+                    console.log("Error details:", jqXHR, textStatus, errorThrown);
+                }
+            });
+        });
+
+        $("#deletePredavacForm").submit(function (event) {
+            event.preventDefault();
+            var id = $("#deleteId").val();
+            $.ajax({
+                url: "/api/Predavacs/" + id,
+                method: "DELETE",
+                success: function () {
+                    alert("Predavač uspešno obrisan.");
+                    $("#deletePredavacForm")[0].reset();
+                    $("#loadPredavaci").click();
+                },
+                error: function () {
+                    alert("Greška prilikom brisanja predavača.");
+                }
+            });
+        });
+    });
+</script>
+
+<!-- Optional Bootstrap CSS for better styling -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+

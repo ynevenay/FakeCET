@@ -1,0 +1,70 @@
+﻿@model FakeCET.Models.Termin
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Termin</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.KursID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PredavacKurs.Kurs.Naziv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PredavacID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PredavacKurs.Predavac.Ime)
+            @Html.DisplayFor(model => model.PredavacKurs.Predavac.Prezime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatumPocetka)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DatumPocetka)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatumZavrsetka)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DatumZavrsetka)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd>
+            @if (Model.Status)
+            {
+                <span class="btn btn-danger">Otkazano</span>
+            }
+            else
+            {
+                <span class="btn btn-success">Potvrđeno</span>
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MestoID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MestoOdrzavanja.Naziv)
+        </dd>
+    </dl>
+</div>
+<p>
+    @if (User.IsInRole("Predavac"))
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.TerminID }, new { @class = "btn btn-primary" })
+    }
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+</p>

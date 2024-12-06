@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Fake CET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
+    <!-- jQuery (potreban za Bootstrap JavaScript) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <div class="container">
+            <img src="~/logo-cet-crn-edited-red.png"width="240" height="80">
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li>@Html.ActionLink("Pocetna", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Dostupni kursevi", "Index", "Kurs", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Postani predavac", "Create", "Predavac", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Postani polaznik", "Create", "Polaznik", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Nasi predavaci", "Index", "Predavac", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Zakazani termini", "Index", "Termin", new { area = "" }, new { @class = "nav-link" })</li>
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Admin panel
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="@Url.Action("Neodobreni", "Predavac", new { area = "" })">Predavači na čekanju</a>
+                                <a class="dropdown-item" href="@Url.Action("Create", "Kurs", new { area = "" })">Dodaj kurs</a>
+                                <a class="dropdown-item" href="@Url.Action("Create", "Oblast", new { area = "" })">Dodaj oblast</a>
+                                <a class="dropdown-item" href="@Url.Action("Create", "MestoOdrzavanja", new { area = "" })">Dodaj mesto</a>
+                                <a class="dropdown-item" href="@Url.Action("Index", "Polaznik", new { area = "" })">Svi polaznici</a>
+                                <a class="dropdown-item" href="@Url.Action("Index", "Admin", new { area = "" })">Predavači detaljno</a>
+                                <a class="dropdown-item" href="@Url.Action("DodeliPredavaca", "Admin", new { area = "" })">Dodeli kurs predavaču</a>
+                                <a class="dropdown-item" href="@Url.Action("SvePrijave", "PrijavaKurs", new { area = "" })">Sve prijave na termine</a>
+                            </div>
+                        </li>
+
+                    }
+
+
+                    @if (User.IsInRole("Predavac"))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Predavac panel
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="@Url.Action("Index", "Oblast", new { area = "" })">Sve oblasti</a>
+                                <a class="dropdown-item" href="@Url.Action("Index", "MestoOdrzavanja", new { area = "" })">Mesta za odrzavanje</a>
+                                <a class="dropdown-item" href="@Url.Action("Index", "Polaznik", new { area = "" })">Svi polaznici</a>
+                                <a class="dropdown-item" href="@Url.Action("Create", "Termin", new { area = "" })">Zakazi termin</a>
+                                <a class="dropdown-item" href="@Url.Action("SvePrijave", "PrijavaKurs", new { area = "" })">Sve prijave na termine</a>
+                            </div>
+                        </li>
+
+                    }
+
+                    @if (User.IsInRole("Polaznik"))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Polaznik panel
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="@Url.Action("Index", "Oblast", new { area = "" })">Sve oblasti</a>
+                                <a class="dropdown-item" href="@Url.Action("Index", "PrijavaKurs", new { area = "" })">Prijavi se na kurs</a>
+                                <a class="dropdown-item" href="@Url.Action("MojePrijave", "PrijavaKurs", new { area = "" })">Moji kursevi</a>
+                            </div>
+                        </li>
+
+                    }
+
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Fake CET</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

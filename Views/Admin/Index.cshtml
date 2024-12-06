@@ -1,0 +1,25 @@
+﻿@model  FakeCET.Models.PredavacKursViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Pregled predavača i kurseva</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Predavač</th>
+            <th>Kurs</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.PredavacKursevi)
+        {
+            <tr>
+                <td>@item.Predavac.Ime @item.Predavac.Prezime</td>
+                <td>@item.Kurs.Naziv</td>
+            </tr>
+        }
+    </tbody>
+</table>

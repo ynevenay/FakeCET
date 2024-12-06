@@ -1,0 +1,25 @@
+﻿@model List<FakeCET.Models.PredavacKurs>
+
+@{
+    ViewBag.Title = "Predavači i Kursevi";
+}
+
+<h2>Predavači i Kursevi</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Predavač</th>
+            <th>Kurs</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Predavac.Ime @item.Predavac.Prezime</td>
+                <td>@item.Kurs.Naziv</td>
+            </tr>
+        }
+    </tbody>
+</table>

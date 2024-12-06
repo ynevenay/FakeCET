@@ -1,0 +1,50 @@
+﻿@model FakeCET.Models.Predavac
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Postani Predavac</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Ime)
+        @Html.TextBoxFor(model => model.Ime, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Ime)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Prezime)
+        @Html.TextBoxFor(model => model.Prezime, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Prezime)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.KontaktTelefon)
+        @Html.TextBoxFor(model => model.KontaktTelefon, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.KontaktTelefon)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.MejlAdresa)
+        @Html.TextBoxFor(model => model.MejlAdresa, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.MejlAdresa)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Zvanje)
+        @Html.TextBoxFor(model => model.Zvanje, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Zvanje)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.OblastRada)
+        @Html.TextBoxFor(model => model.OblastRada, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.OblastRada)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+}

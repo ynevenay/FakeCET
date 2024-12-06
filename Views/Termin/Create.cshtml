@@ -1,0 +1,68 @@
+﻿@model FakeCET.ViewModels.TerminViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.KursID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.KursID, new SelectList(Model.Kursevi, "KursID", "Naziv"), "Choose...")
+            @Html.ValidationMessageFor(model => model.KursID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PredavacID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.PredavacID, new SelectList(Model.Predavaci, "PredavacID", "Ime"), "Choose...")
+            @Html.ValidationMessageFor(model => model.PredavacID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.MestoID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.MestoID, new SelectList(Model.MestaOdrzavanja, "MestoID", "Naziv"), "Choose...")
+            @Html.ValidationMessageFor(model => model.MestoID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Termin.DatumPocetka, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="date" id="DatumPocetka" name="DatumPocetka" class="form-control" />
+            @Html.ValidationMessageFor(model => model.Termin.DatumPocetka, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Termin.DatumZavrsetka, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="date" id="DatumZavrsetka" name="DatumZavrsetka" class="form-control" />
+            @Html.ValidationMessageFor(model => model.Termin.DatumZavrsetka, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

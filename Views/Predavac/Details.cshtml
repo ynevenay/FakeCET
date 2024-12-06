@@ -1,0 +1,36 @@
+﻿@model FakeCET.Models.Predavac
+
+<h2>Detalji o predavaču</h2>
+
+<dl class="dl-horizontal">
+    <dt>
+        Ime
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.Ime)
+    </dd>
+    <dt>
+        Prezime
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.Prezime)
+    </dd>
+
+    <dd>
+        @Html.DisplayFor(model => model.KontaktTelefon)
+    </dd>
+
+    <dd>
+        @Html.DisplayFor(model => model.MejlAdresa)
+    </dd>
+
+    <dd>
+        @Html.DisplayFor(model => model.Zvanje)
+    </dd>
+
+    <dd>
+        @Html.DisplayFor(model => model.OblastRada)
+    </dd>
+</dl>
+
+@Html.ActionLink("Back to List", "Index")

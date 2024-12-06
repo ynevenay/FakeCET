@@ -1,0 +1,52 @@
+﻿@model IEnumerable<FakeCET.Models.PrijavaKursViewModel>
+
+@{
+    ViewBag.Title = "Moje Prijave";
+}
+
+<h2>Moje Prijave</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Naziv Kursa</th>
+            <th>Ime Predavača</th>
+            <th>Prezime Predavača</th>
+            <th>Datum Početka</th>
+            <th>Datum Završetka</th>
+            <th>Status</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.NazivKursa</td>
+                <td>@item.ImePredavaca</td>
+                <td>@item.PrezimePredavaca</td>
+                <td>@item.DatumPocetka.ToString("dd.MM.yyyy")</td>
+                <td>@item.DatumZavrsetka.ToString("dd.MM.yyyy")</td>
+                <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                @if (item.Status == 0)
+                {
+                    <td>Prihvacena</td>
+                }
+                @if (item.Status == 1)
+                {
+                    <td>Odbijena</td>
+                }
+                @if (item.Status == -1)
+                {
+                    <td>U obradi</td>
+                }
+                <td>
+                    @using (Html.BeginForm("ObrisiPrijavu", "PrijavaKurs", new { terminId = item.TerminID }, FormMethod.Post))
+                    {
+                        <button type="submit" class="btn btn-danger">Obriši Prijavu</button>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

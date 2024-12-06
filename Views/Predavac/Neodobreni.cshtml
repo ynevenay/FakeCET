@@ -1,0 +1,36 @@
+﻿@model List<FakeCET.Models.Predavac>
+
+@{
+    ViewBag.Title = "Neodobreni predavači";
+}
+
+<h2>Neodobreni predavači</h2>
+
+@using (Html.BeginForm("SacuvajOdobrenje", "Predavac", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Ime</th>
+                <th>Prezime</th>
+                <th>Odobrenje</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(model => model[i].Ime)</td>
+                    <td>@Html.DisplayFor(model => model[i].Prezime)</td>
+                    <td>
+                        @Html.HiddenFor(model => model[i].PredavacID)
+                        @Html.CheckBoxFor(model => model[i].Odobrenje)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <button type="submit" class="btn btn-primary">Sačuvaj promene</button>
+}

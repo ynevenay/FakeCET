@@ -1,0 +1,33 @@
+﻿@model FakeCET.Models.Polaznik
+
+@{
+    ViewBag.Title = "Obriši Polaznika";
+}
+
+<h2>Obriši Polaznika</h2>
+
+<div>
+    <h4>Da li ste sigurni da želite da obrišete ovog polaznika?</h4>
+    <dl class="dl-horizontal">
+        <dt>Ime</dt>
+        <dd>@Model.Ime</dd>
+        <dt>Prezime</dt>
+        <dd>@Model.Prezime</dd>
+        <dt>Kontakt Telefon</dt>
+        <dd>@Model.KontaktTelefon</dd>
+        <dt>Mejl Adresa</dt>
+        <dd>@Model.MejlAdresa</dd>
+    </dl>
+
+    @using (Html.BeginForm("Delete", "Polaznik", new { id = Model.PolaznikID }, FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Obriši" class="btn btn-danger" />
+                @Html.ActionLink("Odustani", "Index", null, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    }
+</div>

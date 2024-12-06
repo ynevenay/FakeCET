@@ -1,0 +1,79 @@
+﻿@model PagedList.IPagedList<FakeCET.Models.Kurs>
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Kursevi";
+}
+
+<h2>Kursevi</h2>
+
+<form method="get" action="@Url.Action("Index")">
+    <p>
+        Pretrazi po nazivu: @Html.TextBox("searchString", ViewBag.CurrentFilter as string)
+        <br />
+        Filtriraj po oblasti: @Html.DropDownList("oblastId", ViewBag.Oblasti as SelectList, "All")
+        <input type="submit" value="Search" class="btn btn-default" />
+    </p>
+</form>
+
+<p>
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Dodaj novi kurs", "Create", null, new { @class = "btn btn-primary" })
+    }
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.ActionLink("Naziv", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter, searchString = ViewBag.CurrentFilter, oblastId = ViewBag.CurrentOblastId })
+            </th>
+            <th>
+                @Html.ActionLink("Trajanje", "Index", new { sortOrder = ViewBag.DurationSortParm, currentFilter = ViewBag.CurrentFilter, searchString = ViewBag.CurrentFilter, oblastId = ViewBag.CurrentOblastId })
+            </th>
+            <th>
+                @Html.ActionLink("Cena", "Index", new { sortOrder = ViewBag.PriceSortParm, currentFilter = ViewBag.CurrentFilter, searchString = ViewBag.CurrentFilter, oblastId = ViewBag.CurrentOblastId })
+            </th>
+
+            <th>
+                @Html.ActionLink("Oblast", "Index", new { sortOrder = ViewBag.AreaSortParm, currentFilter = ViewBag.CurrentFilter, searchString = ViewBag.CurrentFilter, oblastId = ViewBag.CurrentOblastId })
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Naziv)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Trajanje)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cena)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Oblast.Naziv)
+                </td>
+                <td>
+                    @Html.ActionLink("Detalji", "Details", new { id = item.KursID }, new { @class = "btn btn-info btn-sm" })
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <text> | </text>
+                        @Html.ActionLink("Izmeni", "Edit", new { id = item.KursID }, new { @class = "btn btn-warning btn-sm" })
+                        <text> | </text>
+                        @Html.ActionLink("Obriši", "Delete", new { id = item.KursID }, new { @class = "btn btn-danger btn-sm" })
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, searchString = ViewBag.CurrentFilter, oblastId = ViewBag.CurrentOblastId }))
+</div>

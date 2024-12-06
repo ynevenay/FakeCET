@@ -1,0 +1,53 @@
+﻿@model FakeCET.Models.Oblast
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="container">
+    <h2>Obrisi Oblast</h2>
+
+    <h3>Confirm Deletion</h3>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Oblast Details</h4>
+            <hr />
+
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Naziv)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Naziv)
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    @if (User.IsInRole("Admin"))
+    {
+        using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="row mt-3">
+                <div class="col-sm-10">
+                    <input type="submit" value="Delete" class="btn btn-danger" /> |
+                    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-default" })
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="alert alert-danger">
+            <strong>Unauthorized:</strong> You do not have permission to delete this resource.
+        </div>
+        <div class="row mt-3">
+            <div class="col-sm-10">
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    }
+</div>

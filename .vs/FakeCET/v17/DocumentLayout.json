@@ -1,0 +1,92 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\FakeCET\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{06CC471F-2669-4628-A576-EF74CF060E9D}|FakeCET.csproj|d:\\fakecet\\controllers\\predavaccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06CC471F-2669-4628-A576-EF74CF060E9D}|FakeCET.csproj|solutionrelative:controllers\\predavaccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{06CC471F-2669-4628-A576-EF74CF060E9D}|FakeCET.csproj|d:\\fakecet\\models\\predavac.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06CC471F-2669-4628-A576-EF74CF060E9D}|FakeCET.csproj|solutionrelative:models\\predavac.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{06CC471F-2669-4628-A576-EF74CF060E9D}|FakeCET.csproj|d:\\fakecet\\views\\predavac\\api.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{06CC471F-2669-4628-A576-EF74CF060E9D}|FakeCET.csproj|solutionrelative:views\\predavac\\api.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{06CC471F-2669-4628-A576-EF74CF060E9D}|FakeCET.csproj|d:\\fakecet\\models\\predavackurs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06CC471F-2669-4628-A576-EF74CF060E9D}|FakeCET.csproj|solutionrelative:models\\predavackurs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PredavacController.cs",
+              "DocumentMoniker": "D:\\FakeCET\\Controllers\\PredavacController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PredavacController.cs",
+              "ToolTip": "D:\\FakeCET\\Controllers\\PredavacController.cs",
+              "RelativeToolTip": "Controllers\\PredavacController.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAABcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-26T17:08:54.922Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Predavac.cs",
+              "DocumentMoniker": "D:\\FakeCET\\Models\\Predavac.cs",
+              "RelativeDocumentMoniker": "Models\\Predavac.cs",
+              "ToolTip": "D:\\FakeCET\\Models\\Predavac.cs",
+              "RelativeToolTip": "Models\\Predavac.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-26T17:08:52.534Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Api.cshtml",
+              "DocumentMoniker": "D:\\FakeCET\\Views\\Predavac\\Api.cshtml",
+              "RelativeDocumentMoniker": "Views\\Predavac\\Api.cshtml",
+              "ToolTip": "D:\\FakeCET\\Views\\Predavac\\Api.cshtml",
+              "RelativeToolTip": "Views\\Predavac\\Api.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-26T17:08:06.58Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PredavacKurs.cs",
+              "DocumentMoniker": "D:\\FakeCET\\Models\\PredavacKurs.cs",
+              "RelativeDocumentMoniker": "Models\\PredavacKurs.cs",
+              "ToolTip": "D:\\FakeCET\\Models\\PredavacKurs.cs",
+              "RelativeToolTip": "Models\\PredavacKurs.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-26T17:02:41.753Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

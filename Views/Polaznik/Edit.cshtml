@@ -1,0 +1,24 @@
+﻿@model FakeCET.Models.Polaznik
+
+@{
+    ViewBag.Title = "Izmeni Polaznika";
+}
+
+<h2>Izmeni Polaznika</h2>
+
+@using (Html.BeginForm("Edit", "Polaznik", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.PolaznikID)
+    <div class="form-group">
+        @Html.LabelFor(model => model.KontaktTelefon)
+        @Html.EditorFor(model => model.KontaktTelefon, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+    <button type="submit" class="btn btn-primary">Sačuvaj izmene</button>
+}
+
+
+
+<div>
+    @Html.ActionLink("Nazad na listu", "Index")
+</div>
